@@ -1,0 +1,29 @@
+{
+  "name": "babel-preset-tmall",
+  "version": "6.0.0",
+  "description": "Babel preset including es2015+ react flow",
+  "author": "haozi",
+  "homepage": "https://github.com/haozi/babel-preset-tmall",
+  "license": "MIT",
+  "repository": "https://github.com/haozi/babel-preset-tmall/issues",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "copy": "rm -rf lib && cp -r src lib",
+    "build": "npm run lint && npm run copy && babel --presets tmall --plugins transform-runtime src/ --out-dir lib/ --retain-lines --source-maps inline",
+    "lint": "standard 'src/**/**.js' --fix",
+    "prepublish": "npm run lint && npm run build"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-es2016": "^6.24.0",
+    "babel-preset-es2017": "^6.24.0",
+    "babel-preset-react": "^6.24.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-helper-plugin-test-runner": "^6.24.0",
+    "babel-preset-tmall": "*",
+    "standard": "^10.0.2"
+  }
+}
