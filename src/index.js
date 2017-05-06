@@ -1,15 +1,25 @@
-import presetES2015 from 'babel-preset-es2015'
-import presetES2016 from 'babel-preset-es2016'
-import presetES2017 from 'babel-preset-es2017'
-import presetReact from 'babel-preset-react'
+import env from 'babel-preset-env'
+import transformRuntime from 'babel-plugin-transform-runtime'
 
-export default function (context, opts = {}) {
+export default function (context, { targets } = {}) {
+  targets = Object.assign({}, {
+    node: 4
+  }, targets)
+
+  if (typeof targets.node !== 'number') {
+    delete targets.node
+  } else if (targets.node < 1) {
+    targets.node = 1
+  }
+
   return {
     presets: [
-      opts.es2015 !== false && [presetES2015.buildPreset, opts.es2015],
-      opts.es2016 !== false && presetES2016,
-      opts.es2017 !== false && presetES2017,
-      opts.react !== false && presetReact
-    ].filter(Boolean)
+      [env, {
+        targets
+      }]
+    ],
+    plugins: [
+      targets.node && transformRuntime
+    ]
   }
 }

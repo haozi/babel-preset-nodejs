@@ -1,30 +1,27 @@
 {
-  "name": "babel-preset-tmall",
-  "version": "6.0.1",
-  "description": "Babel preset including es2015+ react flow",
+  "name": "babel-preset-nodejs",
+  "version": "6.0.0",
+  "description": "Babel preset for nodejs",
   "author": "haozi",
-  "homepage": "https://github.com/haozi/babel-preset-tmall",
+  "homepage": "https://github.com/haozi/babel-preset-nodejs",
   "license": "MIT",
-  "repository": "https://github.com/haozi/babel-preset-tmall/issues",
+  "repository": "https://github.com/haozi/babel-preset-nodejs/issues",
   "main": "lib/index.js",
   "scripts": {
     "dev": "npm run build -- --watch",
     "copy": "rm -rf lib && cp -r src lib",
-    "build": "npm run lint && npm run copy && babel --presets tmall --plugins transform-runtime src/ --out-dir lib/ --retain-lines --source-maps inline",
+    "build": "npm run lint && npm run copy && babel --presets nodejs --plugins transform-runtime src/ --out-dir lib/ --retain-lines --source-maps inline",
     "lint": "standard 'src/**/**.js' --fix",
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.24.0",
-    "babel-preset-es2016": "^6.24.0",
-    "babel-preset-es2017": "^6.24.0",
-    "babel-preset-react": "^6.24.0"
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-env": "*"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-helper-plugin-test-runner": "^6.24.0",
-    "babel-preset-tmall": "*",
-    "standard": "^10.0.2"
+    "babel-cli": "6.x.x",
+    "babel-helper-plugin-test-runner": "6.x.x",
+    "babel-preset-nodejs": "*",
+    "standard": "*"
   }
 }
